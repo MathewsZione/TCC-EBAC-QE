@@ -1,0 +1,23 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "Projeto de automação UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run cypress:run && npm run allure:generate",
+    "cypress:run": "cypress run --browser electron",
+    "allure:generate": "allure generate cypress/reports/allure-results --clean -o cypress/reports/allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.11.0",
+    "cypress-real-events": "^1.12.0",
+    "faker-br": "^0.4.1"
+  },
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.2",
+    "allure-commandline": "^2.29.0"
+  }
+}
