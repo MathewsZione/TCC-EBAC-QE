@@ -1,25 +1,22 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const produtos = require('../fixtures/produtos.json')
+
+Cypress.Commands.add('login', (email, password) => {
+        cy.get('#username').click().type(email)
+        cy.get("#password").click().type(password)
+        cy.get("#rememberme").click({force : true}).should('be.checked')
+        cy.get('.woocommerce-form > .button').should('be.visible').click({force : true})
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)', { timeout: 10000 })
+        .should('be.visible').and('contain.text', 'Olá, aluno_ebac')
+
+})
+
+Cypress.Commands.add('AdicionarProdutoAoCarrinho', () => {
+        cy.get('#primary-menu > .menu-item-629 > a').click({ force: true });
+        cy.get('.post-2559 > .product-block > .block-inner > .image > .product-image > .image-hover').click({ force: true })
+        cy.get('.product_title').should('contains.text', 'Abominable Hoodie')
+        cy.get('.button-variable-item-M').click({ force: true })
+        cy.get('.button-variable-item-Blue').click({ force: true })
+        cy.get('.button-variable-item-Blue').click({ force: true })
+});
+
+
