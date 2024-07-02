@@ -4,9 +4,18 @@ beforeEach(() => {
   
 });
 
-describe('Teste de exemplo', () => {
+describe('Funcionalidade produtos', () => {
 
-  it('Deve acessar a página de minha conta', () => {
-    cy.AdicionarProdutoAoCarrinho()
+  it('Selecionar um produto com cor diferente e adicionar a lista de desejos', () => {
+    cy.AdicionarProdutosAoCarrinho()
   });
+
+  it('Deve favoritar um produto', () => {
+    cy.favoritarProduto()
+  });
+
+  it('Deve remover o produto da lista de desejos', () => {
+    cy.removerProdutoDaListaDeDesejos()
+  });
+
 });

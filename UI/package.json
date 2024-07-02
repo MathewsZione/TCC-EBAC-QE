@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run cypress:run && npm run allure:generate",
-    "cypress:run": "cypress run --browser electron",
+    "cy:run": "cypress run --browser electron",
     "allure:generate": "allure generate cypress/reports/allure-results --clean -o cypress/reports/allure-report"
   },
   "keywords": [],
