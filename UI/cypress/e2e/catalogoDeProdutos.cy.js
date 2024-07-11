@@ -1,8 +1,8 @@
 beforeEach(() => {
-  cy.visit(`${Cypress.env('baseUrl')}/minha-conta/`)
-  cy.login(Cypress.env('email'), Cypress.env('password'))
-  
+  cy.visit(`${Cypress.env('baseUrl')}/minha-conta/`);
+  cy.GUILogin(Cypress.env('email'), Cypress.env('password'));
 });
+
 
 describe('Funcionalidade produtos', () => {
 
