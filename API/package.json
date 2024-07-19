@@ -5,6 +5,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,6 +23,7 @@
     "jest": "^29.7.0",
     "jest-html-reporters": "^3.1.7",
     "joi": "^17.13.3",
+    "pactum": "^3.7.0",
     "supertest": "^7.0.0"
   }
 }
