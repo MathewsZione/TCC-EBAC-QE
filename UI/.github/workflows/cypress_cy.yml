@@ -1,0 +1,34 @@
+name: Continuos integreation 
+
+on:  
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: Setup de ambiente Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18' 
+
+      - name: Instalando dependências
+        run: npm install --legacy-peer-deps
+        
+      - name: Cypress Run
+        uses: cypress-io/github-action@v2
+        with:
+          install-command: npm install --legacy-peer-deps
+          browser: chrome
+
+      - name: Publicando o relatório
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./cypress
